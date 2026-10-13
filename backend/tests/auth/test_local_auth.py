@@ -239,6 +239,35 @@ def test_auth_db_separate_from_manufacturing_db(tmp_path: Path):
     assert not settings.default_database_path.exists()
 
 
+def test_auth_db_override_initializes_only_configured_path(tmp_path: Path):
+    auth_path = tmp_path / "persistent" / "auth.db"
+    settings = Settings(
+        project_root=tmp_path,
+        auth_database_path_override=str(auth_path),
+        auth_jwt_secret="test-secret-with-at-least-32-bytes-for-hs256",
+    )
+    app = create_app(orchestrator=NoCallOrchestrator(), settings=settings)
+    with TestClient(app) as client:
+        response = client.post(
+            "/api/auth/register",
+            json={
+                "username": "deploy-user",
+                "display_name": "Deploy User",
+                "role": "Engineer",
+                "password": "private-pass",
+            },
+        )
+        assert response.status_code == 201
+        login = client.post(
+            "/api/auth/login",
+            json={"username": "deploy-user", "password": "private-pass"},
+        )
+        assert login.status_code == 200
+    assert auth_path.exists()
+    assert not (tmp_path / "backend" / "data" / "auth.db").exists()
+    assert not settings.default_database_path.exists()
+
+
 def create_expired_token(user_id: str) -> str:
     now = datetime.now(UTC)
     return jwt.encode(

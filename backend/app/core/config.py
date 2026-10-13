@@ -20,6 +20,7 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         env_ignore_empty=True,
         extra="ignore",
+        populate_by_name=True,
     )
 
     app_env: str = "development"
@@ -101,6 +102,9 @@ class Settings(BaseSettings):
     document_dynamic_collection: str = "manufacturaiq_dynamic_documents"
     document_ingest_batch_size: int = 32
     auth_jwt_secret: str | None = None
+    auth_database_path_override: str | None = Field(
+        default=None, validation_alias="AUTH_DATABASE_PATH"
+    )
     auth_access_token_minutes: int = 480
 
     project_root: Path = Field(default_factory=lambda: Path(__file__).resolve().parents[3])
@@ -168,6 +172,8 @@ class Settings(BaseSettings):
 
     @property
     def auth_database_path(self) -> Path:
+        if self.auth_database_path_override and self.auth_database_path_override.strip():
+            return Path(self.auth_database_path_override.strip()).expanduser()
         return self.project_root / "backend" / "data" / "auth.db"
 
     @property

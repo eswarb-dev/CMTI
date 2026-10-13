@@ -27,10 +27,25 @@ def test_config_loads_test_environment_overrides(monkeypatch) -> None:
     monkeypatch.setenv("APP_ENV", "test")
     monkeypatch.setenv("LOG_LEVEL", "DEBUG")
     monkeypatch.setenv("QDRANT_PATH", "D:/tmp/qdrant")
+    monkeypatch.setenv("CORS_ALLOWED_ORIGINS", '["https://example.vercel.app"]')
     settings = Settings(_env_file=None)
     assert settings.app_env == "test"
     assert settings.log_level == "DEBUG"
     assert settings.vector_store_path == Path("D:/tmp/qdrant")
+    assert settings.cors_allowed_origins == ["https://example.vercel.app"]
+
+
+def test_auth_database_path_defaults_to_backend_data(monkeypatch, tmp_path: Path) -> None:
+    monkeypatch.delenv("AUTH_DATABASE_PATH", raising=False)
+    settings = Settings(_env_file=None, project_root=tmp_path)
+    assert settings.auth_database_path == tmp_path / "backend" / "data" / "auth.db"
+
+
+def test_auth_database_path_override(monkeypatch, tmp_path: Path) -> None:
+    override = tmp_path / "persistent" / "auth.db"
+    monkeypatch.setenv("AUTH_DATABASE_PATH", str(override))
+    settings = Settings(_env_file=None, project_root=tmp_path)
+    assert settings.auth_database_path == override
 
 
 def test_logging_redacts_secret_like_fields() -> None:
