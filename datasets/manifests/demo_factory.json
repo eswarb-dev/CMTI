@@ -1,0 +1,90 @@
+{
+  "generator_version": "demo_factory.step02.v1",
+  "seed": 20260926,
+  "generated_at": "2026-09-26T00:00:00+05:30",
+  "timezone": "Asia/Kolkata",
+  "factory_name": "ManufacturaIQ Demo Plant",
+  "is_synthetic": true,
+  "tables": {
+    "machines": {
+      "path": "D:\\CMTI\\datasets\\normalized\\demo_factory\\machines.parquet",
+      "format": "parquet",
+      "rows": 3,
+      "columns": 10,
+      "sha256": "4d5bdf40bb5ed7bdeb3cd53d0f0712e9e56d30326998242f9cf4f85cbb115d88"
+    },
+    "products": {
+      "path": "D:\\CMTI\\datasets\\normalized\\demo_factory\\products.parquet",
+      "format": "parquet",
+      "rows": 3,
+      "columns": 7,
+      "sha256": "14443274f674d6db8e200fab7ffde3f9290b380a39a2ef3bc6a6799730048a6b"
+    },
+    "production_orders": {
+      "path": "D:\\CMTI\\datasets\\normalized\\demo_factory\\production_orders.parquet",
+      "format": "parquet",
+      "rows": 180,
+      "columns": 17,
+      "sha256": "1ede666a59ffc16603d1654b4861b6fe73a9bc0e8e0c4253568f0203e2b5a188"
+    },
+    "quality_inspections": {
+      "path": "D:\\CMTI\\datasets\\normalized\\demo_factory\\quality_inspections.parquet",
+      "format": "parquet",
+      "rows": 900,
+      "columns": 15,
+      "sha256": "55ca0cfae2ba880768d95f5de881e60faeb1f46cc62f403a1e29237cf6acdcf1"
+    },
+    "telemetry": {
+      "path": "D:\\CMTI\\datasets\\normalized\\demo_factory\\telemetry.parquet",
+      "format": "parquet",
+      "rows": 38379,
+      "columns": 11,
+      "sha256": "bedf30f6b107bfe18a4ceefd45502f9fcc65223e387446fb92cb3e917c387aa8"
+    },
+    "maintenance_logs": {
+      "path": "D:\\CMTI\\datasets\\normalized\\demo_factory\\maintenance_logs.parquet",
+      "format": "parquet",
+      "rows": 75,
+      "columns": 16,
+      "sha256": "5cacb96c7bf6f141d0f62a5e2f6fcef1198afabbb2986d124d8793c7a1749b58"
+    },
+    "machine_alarms": {
+      "path": "D:\\CMTI\\datasets\\normalized\\demo_factory\\machine_alarms.parquet",
+      "format": "parquet",
+      "rows": 51,
+      "columns": 12,
+      "sha256": "369204cdecfb7627782a4d208e9c89a35a50278d021471e6313e41d2efa75486"
+    }
+  },
+  "row_counts": {
+    "machines": 3,
+    "products": 3,
+    "production_orders": 180,
+    "quality_inspections": 900,
+    "telemetry": 38379,
+    "maintenance_logs": 75,
+    "machine_alarms": 51
+  },
+  "date_range": {
+    "start": "2026-09-01T08:00:00+05:30",
+    "end": "2026-10-15T18:00:00+05:30"
+  },
+  "machine_ids": [
+    "CNC-01",
+    "CNC-03",
+    "CNC-05"
+  ],
+  "product_ids": [
+    "SHAFT-A",
+    "GEAR-B",
+    "HOUSING-C"
+  ],
+  "scenario_ids": [
+    "CASE-001",
+    "CASE-002",
+    "CASE-003",
+    "CASE-004",
+    "CASE-005"
+  ],
+  "schema_version": "demo_factory.v1"
+}

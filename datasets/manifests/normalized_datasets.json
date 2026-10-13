@@ -1,0 +1,136 @@
+[
+  {
+    "dataset_id": "kaggle_ai4i_predictive_maintenance",
+    "artifact_name": "machine_condition_observations",
+    "path": "D:\\CMTI\\datasets\\normalized\\external\\predictive_maintenance\\machine_condition_observations.parquet",
+    "format": "parquet",
+    "domain": [
+      "maintenance",
+      "machine_condition",
+      "telemetry_like_observations"
+    ],
+    "rows": 10000,
+    "columns": 16,
+    "source_dataset": "kaggle_ai4i_predictive_maintenance",
+    "source_files": [
+      "predictive_maintenance.csv"
+    ],
+    "is_external_dataset": true,
+    "schema_version": "external.step01.v1",
+    "adapter_version": "step01.v1"
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "artifact_name": "experiment_metadata",
+    "path": "D:\\CMTI\\datasets\\normalized\\external\\cnc_tool_wear\\experiment_metadata.parquet",
+    "format": "parquet",
+    "domain": [
+      "maintenance",
+      "production"
+    ],
+    "rows": 18,
+    "columns": 13,
+    "source_dataset": "kaggle_cnc_mill_tool_wear",
+    "source_files": [
+      "train.csv"
+    ],
+    "is_external_dataset": true,
+    "schema_version": "external.step01.v1",
+    "adapter_version": "step01.v1"
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "artifact_name": "experiment_samples",
+    "path": "D:\\CMTI\\datasets\\normalized\\external\\cnc_tool_wear\\experiment_samples.parquet",
+    "format": "parquet",
+    "domain": [
+      "production",
+      "telemetry_like_ordered_samples"
+    ],
+    "rows": 25286,
+    "columns": 57,
+    "source_dataset": "kaggle_cnc_mill_tool_wear",
+    "source_files": [
+      "experiment_01.csv",
+      "experiment_02.csv",
+      "experiment_03.csv",
+      "experiment_04.csv",
+      "experiment_05.csv",
+      "experiment_06.csv",
+      "experiment_07.csv",
+      "experiment_08.csv",
+      "experiment_09.csv",
+      "experiment_10.csv",
+      "experiment_11.csv",
+      "experiment_12.csv",
+      "experiment_13.csv",
+      "experiment_14.csv",
+      "experiment_15.csv",
+      "experiment_16.csv",
+      "experiment_17.csv",
+      "experiment_18.csv"
+    ],
+    "is_external_dataset": true,
+    "schema_version": "external.step01.v1",
+    "adapter_version": "step01.v1"
+  },
+  {
+    "dataset_id": "kaggle_faulty_steel_plates",
+    "artifact_name": "quality_fault_records",
+    "path": "D:\\CMTI\\datasets\\normalized\\external\\steel_faults\\quality_fault_records.parquet",
+    "format": "parquet",
+    "domain": [
+      "quality",
+      "defect_analysis"
+    ],
+    "rows": 1941,
+    "columns": 42,
+    "source_dataset": "kaggle_faulty_steel_plates",
+    "source_files": [
+      "faults.csv"
+    ],
+    "is_external_dataset": true,
+    "schema_version": "external.step01.v1",
+    "adapter_version": "step01.v1"
+  },
+  {
+    "dataset_id": "kaggle_industrial_maintenance_synthetic",
+    "artifact_name": "maintenance_work_orders",
+    "path": "D:\\CMTI\\datasets\\normalized\\external\\industrial_maintenance\\maintenance_work_orders.parquet",
+    "format": "parquet",
+    "domain": [
+      "maintenance",
+      "work_orders",
+      "equipment_history"
+    ],
+    "rows": 1048779,
+    "columns": 43,
+    "source_dataset": "kaggle_industrial_maintenance_synthetic",
+    "source_files": [
+      "maintenance.csv"
+    ],
+    "is_external_dataset": true,
+    "schema_version": "external.step01.v1",
+    "adapter_version": "step01.v1"
+  },
+  {
+    "dataset_id": "kaggle_industrial_maintenance_synthetic",
+    "artifact_name": "sensor_tag_catalog",
+    "path": "D:\\CMTI\\datasets\\normalized\\external\\industrial_maintenance\\sensor_tag_catalog.parquet",
+    "format": "parquet",
+    "domain": [
+      "equipment_metadata",
+      "sensor_tag_catalog",
+      "industrial_asset_context"
+    ],
+    "rows": 1048779,
+    "columns": 16,
+    "source_dataset": "kaggle_industrial_maintenance_synthetic",
+    "source_files": [
+      "sensor_tags.csv"
+    ],
+    "is_external_dataset": true,
+    "schema_version": "external.step01.v1",
+    "adapter_version": "step01.v1"
+  }
+]

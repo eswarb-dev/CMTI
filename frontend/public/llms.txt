@@ -1,0 +1,16 @@
+# ManufacturaIQ
+
+> AI-powered manufacturing engineering copilot. Ask questions about CNC equipment, operator manuals, lockout/tagout procedures, alarms, and maintenance routines. Grounded retrieval across Haas, Siemens, and OSHA documentation.
+
+## Pages
+
+- [Copilot Chat](https://manufacturaiq.com/) — Main chat interface for asking engineering questions with grounded citations from indexed technical manuals.
+- [Knowledge Base](https://manufacturaiq.com/knowledge-base) — Browse and search indexed technical manuals, machine parameters, and OSHA safety standards.
+- [Document Ingestion Pipeline](https://manufacturaiq.com/uploads) — Monitor the document ingestion pipeline status: PDF parsing, text chunking, embeddings, and vector storage.
+
+## Key Capabilities
+
+- Grounded RAG retrieval across 2,173+ indexed corpus pages (Haas, Siemens, OSHA)
+- Deterministic citation linking to specific manual pages and sections
+- Human-in-the-loop review for safety-critical queries
+- Session-scoped PDF attachment for ad-hoc document analysis

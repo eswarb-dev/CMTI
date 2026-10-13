@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+
+  /* Page background only — white to orange fade */
+  --bg-base: #FFFFFF;
+  --bg-card: #fcfbf8;
+  --accent-yellow: #ffc947;
+  --dark-contrast: #262626;
+  --text-muted: #7a7771;
+
+  /* Semantic mappings */
+  --warm-bg: var(--bg-base);
+  --warm-surface: var(--bg-card);
+  --warm-surface-alt: var(--bg-card);
+  --warm-border: #e0ddd6;
+  --warm-border-light: #eeece7;
+  --warm-accent: var(--accent-yellow);
+  --warm-accent-hover: #f0b830;
+  --warm-accent-light: #fff8e6;
+  --warm-accent-text: #8a6d00;
+  --warm-text: var(--dark-contrast);
+  --warm-text-muted: var(--text-muted);
+  --warm-text-subtle: #9a978f;
+  --warm-dark: var(--dark-contrast);
+  --warm-success: #4a7c59;
+  --warm-warning: #c75b39;
+  --warm-error: #b3402a;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-base);
+  background-image: linear-gradient(135deg, #FFFFFF 0%, #FDEFE2 45%, #F5A85C 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--dark-contrast);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+/* Mobile Safari fallback for background-attachment: fixed */
+@media (max-width: 768px) {
+  html, body, #root {
+    background-attachment: scroll;
+  }
+}
+
+/* Custom sleek light scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c2ba;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a59e;
+}
+
+/* Citation highlight animation */
+@keyframes citationPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 201, 71, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(255, 201, 71, 0.15);
+  }
+}
+
+.highlight-citation {
+  animation: citationPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  border-color: var(--accent-yellow) !important;
+  background-color: var(--warm-accent-light) !important;
+}
+
+/* ============================================
+   Chaotic Orbit Loader
+   Theme-aware via --dark-contrast token.
+   Scales with --uib-size (default 25px).
+   ============================================ */
+
+.chaotic-orbit {
+  --uib-size: 25px;
+  --uib-speed: 1.5s;
+  --uib-color: var(--dark-contrast);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: rotate936 calc(var(--uib-speed) * 1.667) infinite linear;
+  flex-shrink: 0;
+}
+
+.chaotic-orbit::before,
+.chaotic-orbit::after {
+  content: '';
+  position: absolute;
+  height: 60%;
+  width: 60%;
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  will-change: transform;
+  flex-shrink: 0;
+}
+
+.chaotic-orbit::before {
+  animation: orbit var(--uib-speed) linear infinite;
+}
+
+.chaotic-orbit::after {
+  animation: orbit var(--uib-speed) linear calc(var(--uib-speed) / -2) infinite;
+}
+
+@keyframes rotate936 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
+    opacity: 0.65;
+  }
+
+  5% {
+    transform: translate(calc(var(--uib-size) * 0.4)) scale(0.684208);
+    opacity: 0.58;
+  }
+
+  10% {
+    transform: translate(calc(var(--uib-size) * 0.3)) scale(0.631576);
+    opacity: 0.51;
+  }
+
+  15% {
+    transform: translate(calc(var(--uib-size) * 0.2)) scale(0.578944);
+    opacity: 0.44;
+  }
+
+  20% {
+    transform: translate(calc(var(--uib-size) * 0.1)) scale(0.526312);
+    opacity: 0.37;
+  }
+
+  25% {
+    transform: translate(0%) scale(0.47368);
+    opacity: 0.3;
+  }
+
+  30% {
+    transform: translate(calc(var(--uib-size) * -0.1)) scale(0.526312);
+    opacity: 0.37;
+  }
+
+  35% {
+    transform: translate(calc(var(--uib-size) * -0.2)) scale(0.578944);
+    opacity: 0.44;
+  }
+
+  40% {
+    transform: translate(calc(var(--uib-size) * -0.3)) scale(0.631576);
+    opacity: 0.51;
+  }
+
+  45% {
+    transform: translate(calc(var(--uib-size) * -0.4)) scale(0.684208);
+    opacity: 0.58;
+  }
+
+  50% {
+    transform: translate(calc(var(--uib-size) * -0.5)) scale(0.73684);
+    opacity: 0.65;
+  }
+
+  55% {
+    transform: translate(calc(var(--uib-size) * -0.4)) scale(0.789472);
+    opacity: 0.72;
+  }
+
+  60% {
+    transform: translate(calc(var(--uib-size) * -0.3)) scale(0.842104);
+    opacity: 0.79;
+  }
+
+  65% {
+    transform: translate(calc(var(--uib-size) * -0.2)) scale(0.894736);
+    opacity: 0.86;
+  }
+
+  70% {
+    transform: translate(calc(var(--uib-size) * -0.1)) scale(0.947368);
+    opacity: 0.93;
+  }
+
+  75% {
+    transform: translate(0%) scale(1);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translate(calc(var(--uib-size) * 0.1)) scale(0.947368);
+    opacity: 0.93;
+  }
+
+  85% {
+    transform: translate(calc(var(--uib-size) * 0.2)) scale(0.894736);
+    opacity: 0.86;
+  }
+
+  90% {
+    transform: translate(calc(var(--uib-size) * 0.3)) scale(0.842104);
+    opacity: 0.79;
+  }
+
+  95% {
+    transform: translate(calc(var(--uib-size) * 0.4)) scale(0.789472);
+    opacity: 0.72;
+  }
+
+  100% {
+    transform: translate(calc(var(--uib-size) * 0.5)) scale(0.73684);
+    opacity: 0.65;
+  }
+}

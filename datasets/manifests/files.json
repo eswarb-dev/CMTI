@@ -1,0 +1,252 @@
+[
+  {
+    "dataset_id": "kaggle_industrial_maintenance_synthetic",
+    "canonical_name": "industrial_maintenance",
+    "relative_path": "maintenance.csv",
+    "extension": ".csv",
+    "size_bytes": 418904861,
+    "sha256": "74a5a5df7f7e399458c7787bcd52929256bf47e3155ba15ec4dc3ff759ec550d",
+    "row_count": 1048779,
+    "column_count": 20
+  },
+  {
+    "dataset_id": "kaggle_industrial_maintenance_synthetic",
+    "canonical_name": "industrial_maintenance",
+    "relative_path": "sensor_tags.csv",
+    "extension": ".csv",
+    "size_bytes": 131717618,
+    "sha256": "fb0510b5ce74af1cdff13dfd2e91878f8ff97a86ff51de098c3508772645b871",
+    "row_count": 1048779,
+    "column_count": 9
+  },
+  {
+    "dataset_id": "kaggle_faulty_steel_plates",
+    "canonical_name": "steel_faults",
+    "relative_path": "faults.csv",
+    "extension": ".csv",
+    "size_bytes": 298004,
+    "sha256": "315b45ecd2b7ab441335dc83efa0daed49eb97e6eee59f9612b4b7a1048aeb03",
+    "row_count": 1941,
+    "column_count": 34
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_01.csv",
+    "extension": ".csv",
+    "size_bytes": 467193,
+    "sha256": "b1efc6d21c58a55d5872e9b9636966439af903a6fe397fa9543f283713624a72",
+    "row_count": 1055,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_02.csv",
+    "extension": ".csv",
+    "size_bytes": 736459,
+    "sha256": "c0bbf98e2bc53ab12b959e4238e2fad238b6ef7349e57ed544cf1b413a923fd0",
+    "row_count": 1668,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_03.csv",
+    "extension": ".csv",
+    "size_bytes": 671985,
+    "sha256": "347c48f997b05c9fbeafe737b95a560e8643335b710b622bfc7f6a6853c83bd0",
+    "row_count": 1521,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_04.csv",
+    "extension": ".csv",
+    "size_bytes": 234196,
+    "sha256": "6dfe2f12dbc52deafa2f2810790d4325a9bef36654cdf7c6308c5f4586672b73",
+    "row_count": 532,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_05.csv",
+    "extension": ".csv",
+    "size_bytes": 202320,
+    "sha256": "027f6c2c90a549f0715010508c3829d96ed43eca9b08a19c39e48492a74660f2",
+    "row_count": 462,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_06.csv",
+    "extension": ".csv",
+    "size_bytes": 574296,
+    "sha256": "31e20dee3f5fac3f906f78a4163fc05fbf9e0281a287fa8571aa03c222762785",
+    "row_count": 1296,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_07.csv",
+    "extension": ".csv",
+    "size_bytes": 250860,
+    "sha256": "3228adbc2b8b24bbafa8218fe9fa3c5d8b88f0318693c291f3e79cd1b3c14a69",
+    "row_count": 565,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_08.csv",
+    "extension": ".csv",
+    "size_bytes": 267820,
+    "sha256": "0448594a42a7a4200366712caee5c32fe4f3742dea5d40aada92c94af51911c5",
+    "row_count": 605,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_09.csv",
+    "extension": ".csv",
+    "size_bytes": 328887,
+    "sha256": "7a6ea651e857d7668e6612056a17e1fb2dbbafaa71f2964fe2135ee66e1a35b0",
+    "row_count": 740,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_10.csv",
+    "extension": ".csv",
+    "size_bytes": 574595,
+    "sha256": "982b68db1a26be8f191e56ee73576d253518bff33b671918b5ab802c671b3e63",
+    "row_count": 1301,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_11.csv",
+    "extension": ".csv",
+    "size_bytes": 1022545,
+    "sha256": "82c4b6ebdb3100fa739bd8390736d8f42bf7a891c630c0d5d3c770cab091e4da",
+    "row_count": 2314,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_12.csv",
+    "extension": ".csv",
+    "size_bytes": 1004981,
+    "sha256": "26094bd290a1aa98342f944fd2bbe40a3e4311074d022bb33fa8cefff59ce3d5",
+    "row_count": 2276,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_13.csv",
+    "extension": ".csv",
+    "size_bytes": 987653,
+    "sha256": "73bd4f1a4cb1d7ce42912d0626b83d361dcd3fb7879f70c774be2000971f2c58",
+    "row_count": 2233,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_14.csv",
+    "extension": ".csv",
+    "size_bytes": 1030795,
+    "sha256": "380018a18ea5f0f48127fba21cd53795d61d89464339ed08d67f5b77bc433faf",
+    "row_count": 2332,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_15.csv",
+    "extension": ".csv",
+    "size_bytes": 608883,
+    "sha256": "9a108ab590fd67c4a43c7f4548205b5a58fdf121bc0bba659b32df1be5ba8a21",
+    "row_count": 1381,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_16.csv",
+    "extension": ".csv",
+    "size_bytes": 264491,
+    "sha256": "8bbe7f6e0b17ebc80ab5eb73ae67ed35535e6f0ae7679fff08f413f8851a3070",
+    "row_count": 602,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_17.csv",
+    "extension": ".csv",
+    "size_bytes": 948848,
+    "sha256": "0cd2ec585c6630c7a5dce1556546df15c3cc297d74c8d87489e04f4a4539103a",
+    "row_count": 2150,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "experiment_18.csv",
+    "extension": ".csv",
+    "size_bytes": 996061,
+    "sha256": "f9e0b002f824b81850ef4ed0eab51942f1a208cb71bf1a53c0fee696478183c5",
+    "row_count": 2253,
+    "column_count": 48
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "README.txt",
+    "extension": ".txt",
+    "size_bytes": 5556,
+    "sha256": "9fbda9d10f7d7d02da87f297acc467b520caa1a07769e917dd196753186e681e",
+    "row_count": null,
+    "column_count": null
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "test_artifact.jpg",
+    "extension": ".jpg",
+    "size_bytes": 1038564,
+    "sha256": "16c4e134b183b1b8757f2130b3729f52f20bf3afb612727fb195b271bb34715b",
+    "row_count": null,
+    "column_count": null
+  },
+  {
+    "dataset_id": "kaggle_cnc_mill_tool_wear",
+    "canonical_name": "cnc_tool_wear",
+    "relative_path": "train.csv",
+    "extension": ".csv",
+    "size_bytes": 547,
+    "sha256": "780184808ef149f1dfc9cd23b2ec9e757aed5d3ce37abe487a5959a0ed0c08f5",
+    "row_count": 18,
+    "column_count": 7
+  },
+  {
+    "dataset_id": "kaggle_ai4i_predictive_maintenance",
+    "canonical_name": "predictive_maintenance",
+    "relative_path": "predictive_maintenance.csv",
+    "extension": ".csv",
+    "size_bytes": 531014,
+    "sha256": "9f0ede0b6fc33edacccfa1924e6430f92bd33ecce6e895543cd228c3a55ff10b",
+    "row_count": 10000,
+    "column_count": 10
+  }
+]

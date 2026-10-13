@@ -1,0 +1,251 @@
+[
+  {
+    "transformation_id": "predictive_maintenance.machine_condition_observations.step01.v1",
+    "source_dataset": "kaggle_ai4i_predictive_maintenance",
+    "source_files": [
+      "predictive_maintenance.csv"
+    ],
+    "adapter_name": "PredictiveMaintenanceAdapter",
+    "adapter_version": "step01.v1",
+    "destination_file": "D:\\CMTI\\datasets\\normalized\\external\\predictive_maintenance\\machine_condition_observations.parquet",
+    "input_rows": 10000,
+    "output_rows": 10000,
+    "input_columns": 10,
+    "output_columns": 16,
+    "invalid_values": {
+      "udi_unique": true,
+      "type_distribution": {
+        "H": 1003,
+        "L": 6000,
+        "M": 2997
+      },
+      "target_distribution": {
+        "0": 9661,
+        "1": 339
+      },
+      "failure_type_distribution": {
+        "Heat Dissipation Failure": 112,
+        "No Failure": 9652,
+        "Overstrain Failure": 78,
+        "Power Failure": 95,
+        "Random Failures": 18,
+        "Tool Wear Failure": 45
+      },
+      "ranges": {
+        "air_temperature_k": {
+          "min": 295.3,
+          "max": 304.5
+        },
+        "process_temperature_k": {
+          "min": 305.7,
+          "max": 313.8
+        },
+        "rotational_speed_rpm": {
+          "min": 1168,
+          "max": 2886
+        },
+        "torque_nm": {
+          "min": 3.8,
+          "max": 76.6
+        },
+        "tool_wear_min": {
+          "min": 0,
+          "max": 253
+        }
+      }
+    },
+    "warnings": [],
+    "generated_at": "2026-10-06T18:23:58.961527+00:00",
+    "raw_source_hashes": {
+      "predictive_maintenance.csv": "9f0ede0b6fc33edacccfa1924e6430f92bd33ecce6e895543cd228c3a55ff10b"
+    }
+  },
+  {
+    "transformation_id": "cnc_tool_wear.experiment_metadata.step01.v1",
+    "source_dataset": "kaggle_cnc_mill_tool_wear",
+    "source_files": [
+      "train.csv"
+    ],
+    "adapter_name": "CNCToolWearAdapter",
+    "adapter_version": "step01.v1",
+    "destination_file": "D:\\CMTI\\datasets\\normalized\\external\\cnc_tool_wear\\experiment_metadata.parquet",
+    "input_rows": 18,
+    "output_rows": 18,
+    "input_columns": 7,
+    "output_columns": 13,
+    "invalid_values": {
+      "mapping_validation": "train.csv No values match experiment_NN.csv file ids",
+      "tool_condition_distribution": {
+        "unworn": 8,
+        "worn": 10
+      },
+      "machining_finalized_distribution": {
+        "no": 4,
+        "yes": 14
+      },
+      "passed_visual_inspection_null_count": 4
+    },
+    "warnings": [],
+    "generated_at": "2026-10-06T18:23:59.200152+00:00",
+    "raw_source_hashes": {
+      "train.csv": "780184808ef149f1dfc9cd23b2ec9e757aed5d3ce37abe487a5959a0ed0c08f5"
+    }
+  },
+  {
+    "transformation_id": "cnc_tool_wear.experiment_samples.step01.v1",
+    "source_dataset": "kaggle_cnc_mill_tool_wear",
+    "source_files": [
+      "experiment_01.csv",
+      "experiment_02.csv",
+      "experiment_03.csv",
+      "experiment_04.csv",
+      "experiment_05.csv",
+      "experiment_06.csv",
+      "experiment_07.csv",
+      "experiment_08.csv",
+      "experiment_09.csv",
+      "experiment_10.csv",
+      "experiment_11.csv",
+      "experiment_12.csv",
+      "experiment_13.csv",
+      "experiment_14.csv",
+      "experiment_15.csv",
+      "experiment_16.csv",
+      "experiment_17.csv",
+      "experiment_18.csv"
+    ],
+    "adapter_name": "CNCToolWearAdapter",
+    "adapter_version": "step01.v1",
+    "destination_file": "D:\\CMTI\\datasets\\normalized\\external\\cnc_tool_wear\\experiment_samples.parquet",
+    "input_rows": 25286,
+    "output_rows": 25286,
+    "input_columns": 48,
+    "output_columns": 57,
+    "invalid_values": {
+      "Machining_Process_distribution": {
+        "End": 2585,
+        "Layer 1 Down": 2655,
+        "Layer 1 Up": 4085,
+        "Layer 2 Down": 2528,
+        "Layer 2 Up": 3104,
+        "Layer 3 Down": 2354,
+        "Layer 3 Up": 2794,
+        "Prep": 1795,
+        "Repositioning": 3377,
+        "Starting": 1,
+        "end": 8
+      }
+    },
+    "warnings": [],
+    "generated_at": "2026-10-06T18:23:59.200152+00:00",
+    "raw_source_hashes": {
+      "experiment_01.csv": "b1efc6d21c58a55d5872e9b9636966439af903a6fe397fa9543f283713624a72",
+      "experiment_02.csv": "c0bbf98e2bc53ab12b959e4238e2fad238b6ef7349e57ed544cf1b413a923fd0",
+      "experiment_03.csv": "347c48f997b05c9fbeafe737b95a560e8643335b710b622bfc7f6a6853c83bd0",
+      "experiment_04.csv": "6dfe2f12dbc52deafa2f2810790d4325a9bef36654cdf7c6308c5f4586672b73",
+      "experiment_05.csv": "027f6c2c90a549f0715010508c3829d96ed43eca9b08a19c39e48492a74660f2",
+      "experiment_06.csv": "31e20dee3f5fac3f906f78a4163fc05fbf9e0281a287fa8571aa03c222762785",
+      "experiment_07.csv": "3228adbc2b8b24bbafa8218fe9fa3c5d8b88f0318693c291f3e79cd1b3c14a69",
+      "experiment_08.csv": "0448594a42a7a4200366712caee5c32fe4f3742dea5d40aada92c94af51911c5",
+      "experiment_09.csv": "7a6ea651e857d7668e6612056a17e1fb2dbbafaa71f2964fe2135ee66e1a35b0",
+      "experiment_10.csv": "982b68db1a26be8f191e56ee73576d253518bff33b671918b5ab802c671b3e63",
+      "experiment_11.csv": "82c4b6ebdb3100fa739bd8390736d8f42bf7a891c630c0d5d3c770cab091e4da",
+      "experiment_12.csv": "26094bd290a1aa98342f944fd2bbe40a3e4311074d022bb33fa8cefff59ce3d5",
+      "experiment_13.csv": "73bd4f1a4cb1d7ce42912d0626b83d361dcd3fb7879f70c774be2000971f2c58",
+      "experiment_14.csv": "380018a18ea5f0f48127fba21cd53795d61d89464339ed08d67f5b77bc433faf",
+      "experiment_15.csv": "9a108ab590fd67c4a43c7f4548205b5a58fdf121bc0bba659b32df1be5ba8a21",
+      "experiment_16.csv": "8bbe7f6e0b17ebc80ab5eb73ae67ed35535e6f0ae7679fff08f413f8851a3070",
+      "experiment_17.csv": "0cd2ec585c6630c7a5dce1556546df15c3cc297d74c8d87489e04f4a4539103a",
+      "experiment_18.csv": "f9e0b002f824b81850ef4ed0eab51942f1a208cb71bf1a53c0fee696478183c5"
+    }
+  },
+  {
+    "transformation_id": "steel_faults.quality_fault_records.step01.v1",
+    "source_dataset": "kaggle_faulty_steel_plates",
+    "source_files": [
+      "faults.csv"
+    ],
+    "adapter_name": "SteelFaultsAdapter",
+    "adapter_version": "step01.v1",
+    "destination_file": "D:\\CMTI\\datasets\\normalized\\external\\steel_faults\\quality_fault_records.parquet",
+    "input_rows": 1941,
+    "output_rows": 1941,
+    "input_columns": 34,
+    "output_columns": 42,
+    "invalid_values": {
+      "single_active_label": 1941,
+      "zero_active_label": 0,
+      "multiple_active_labels": 0,
+      "fault_class_distribution": {
+        "bumps": 402,
+        "dirtiness": 55,
+        "k_scatch": 391,
+        "other_faults": 673,
+        "pastry": 158,
+        "stains": 72,
+        "z_scratch": 190
+      }
+    },
+    "warnings": [],
+    "generated_at": "2026-10-06T18:23:59.263132+00:00",
+    "raw_source_hashes": {
+      "faults.csv": "315b45ecd2b7ab441335dc83efa0daed49eb97e6eee59f9612b4b7a1048aeb03"
+    }
+  },
+  {
+    "transformation_id": "industrial_maintenance.maintenance_work_orders.step01.v1",
+    "source_dataset": "kaggle_industrial_maintenance_synthetic",
+    "source_files": [
+      "maintenance.csv"
+    ],
+    "adapter_name": "IndustrialMaintenanceAdapter",
+    "adapter_version": "step01.v1",
+    "destination_file": "D:\\CMTI\\datasets\\normalized\\external\\industrial_maintenance\\maintenance_work_orders.parquet",
+    "input_rows": 1048779,
+    "output_rows": 1048779,
+    "input_columns": 20,
+    "output_columns": 43,
+    "invalid_values": {
+      "created_date_invalid_count": 46340,
+      "scheduled_start_date_invalid_count": 46530,
+      "scheduled_finish_date_invalid_count": 46375,
+      "actual_start_date_invalid_count": 46130,
+      "actual_finish_date_invalid_count": 46199,
+      "technical_completion_date_invalid_count": 46279,
+      "close_date_invalid_count": 33625,
+      "actual_work_numeric_parse_failures": 24933,
+      "planned_work_numeric_parse_failures": 24971
+    },
+    "warnings": [
+      "Malformed dates are preserved as raw text with parsed nulls and valid=false."
+    ],
+    "generated_at": "2026-10-06T18:24:02.662157+00:00",
+    "raw_source_hashes": {
+      "maintenance.csv": "74a5a5df7f7e399458c7787bcd52929256bf47e3155ba15ec4dc3ff759ec550d"
+    }
+  },
+  {
+    "transformation_id": "industrial_maintenance.sensor_tag_catalog.step01.v1",
+    "source_dataset": "kaggle_industrial_maintenance_synthetic",
+    "source_files": [
+      "sensor_tags.csv"
+    ],
+    "adapter_name": "IndustrialMaintenanceAdapter",
+    "adapter_version": "step01.v1",
+    "destination_file": "D:\\CMTI\\datasets\\normalized\\external\\industrial_maintenance\\sensor_tag_catalog.parquet",
+    "input_rows": 1048779,
+    "output_rows": 1048779,
+    "input_columns": 9,
+    "output_columns": 16,
+    "invalid_values": {
+      "classification": "sensor_tags.csv is catalog metadata, not telemetry measurements"
+    },
+    "warnings": [
+      "No timestamp or measurement value exists in sensor_tags.csv; no telemetry was fabricated."
+    ],
+    "generated_at": "2026-10-06T18:24:02.662157+00:00",
+    "raw_source_hashes": {
+      "sensor_tags.csv": "fb0510b5ce74af1cdff13dfd2e91878f8ff97a86ff51de098c3508772645b871"
+    }
+  }
+]

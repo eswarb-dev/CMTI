@@ -1,0 +1,8 @@
+# robots.txt for ManufacturaIQ
+# Allow all public pages, disallow nothing (no admin/auth routes exist yet)
+
+User-agent: *
+Allow: /
+
+# Sitemap reference
+Sitemap: https://manufacturaiq.com/sitemap.xml

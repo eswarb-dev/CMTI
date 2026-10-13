@@ -1,0 +1,223 @@
+{
+  "thresholds": {
+    "hit_at_1": 0.7,
+    "hit_at_3": 0.85,
+    "hit_at_5": 0.9,
+    "mrr": 0.75
+  },
+  "cases": [
+    {
+      "case_id": "spindle_lubrication",
+      "query": "How do I lubricate the spindle?",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-42618F58C6C0", "DOC-910C22EDCCAD", "DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["spindle"],
+      "expected_keywords_any": ["lubrication", "lubricant", "oil", "grease", "maintenance"],
+      "notes": "SPINDLE LUBRICATION: closest genuine spindle+lubrication evidence (warm-up distribution text)."
+    },
+    {
+      "case_id": "spindle_lubrication_uppercase",
+      "query": "SPINDLE LUBRICATION",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-42618F58C6C0", "DOC-910C22EDCCAD", "DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "notes": "Uppercase keyword query must still reach a machine manual."
+    },
+    {
+      "case_id": "lockout_tagout_procedure",
+      "query": "What is the lockout/tagout procedure?",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-3EA7380FA108"],
+      "required_source_types": ["SAFETY"],
+      "expected_keywords": ["lockout", "tagout"],
+      "notes": "LOCKOUT/TAGOUT PROCEDURE: safety document must rank first."
+    },
+    {
+      "case_id": "written_energy_control_procedure",
+      "query": "written energy control procedure",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-3EA7380FA108"],
+      "required_source_types": ["SAFETY"],
+      "expected_keywords": ["energy"],
+      "expected_keywords_any": ["control", "lockout", "tagout", "isolation"],
+      "notes": "OSHA energy-control content must dominate the result set."
+    },
+    {
+      "case_id": "siemens_828d_alarm_reset",
+      "query": "How do I reset an alarm on the Siemens 828D?",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["alarm"],
+      "notes": "SIEMENS 828D ALARMS: SINUMERIK manual must reach rank 1."
+    },
+    {
+      "case_id": "siemens_program_management",
+      "query": "how do I manage part programs on the 828D",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "notes": "SIEMENS program management stays inside the SINUMERIK manual."
+    },
+    {
+      "case_id": "haas_max_spindle_speed",
+      "query": "What is the maximum spindle speed of the Haas machine?",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0"],
+      "required_source_types": ["MANUAL"],
+      "notes": "HAAS MAX SPINDLE SPEED: a Haas manual must be in the top 3."
+    },
+    {
+      "case_id": "coolant_warning_light",
+      "query": "coolant warning light",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0"],
+      "required_source_types": ["MANUAL"],
+      "notes": "Coolant/warning indicator questions resolve to Haas manuals."
+    },
+    {
+      "case_id": "tool_length_offset",
+      "query": "how do I set a tool length offset",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["tool"],
+      "expected_keywords_any": ["offset", "length"],
+      "notes": "Tool offset setup is documented in the Haas operator manuals."
+    },
+    {
+      "case_id": "emergency_stop_button",
+      "query": "emergency stop button",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0", "DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "notes": "Machine-control questions return a machine manual."
+    },
+    {
+      "case_id": "g00_rapid_motion",
+      "query": "G00 rapid motion",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["g00"],
+      "expected_keywords_any": ["rapid", "motion"],
+      "notes": "G-code reference query lands in the Haas programming chapters."
+    },
+    {
+      "case_id": "teach_a_program",
+      "query": "how to teach a program",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["teach"],
+      "notes": "Siemens teach-in functionality only exists in the 828D manual."
+    },
+    {
+      "case_id": "haas_mill_vs_lathe",
+      "query": "Haas mill backlash compensation",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-910C22EDCCAD"],
+      "required_source_types": ["MANUAL"],
+      "notes": "MILL query must prefer the mill manual over the lathe manual."
+    },
+    {
+      "case_id": "haas_alarm_code_list",
+      "query": "list of alarm codes",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0"],
+      "required_source_types": ["MANUAL"],
+      "notes": "Alarm code tables live in the Haas manuals (rank <= 3)."
+    },
+    {
+      "case_id": "safety_document_type_filter",
+      "query": "lockout tagout energy control",
+      "top_k": 5,
+      "user_context": {"document_type": "SAFETY"},
+      "expected_document_ids": ["DOC-3EA7380FA108"],
+      "required_source_types": ["SAFETY"],
+      "expected_keywords": ["lockout", "tagout"],
+      "notes": "document_type=SAFETY restricts every returned evidence to SAFETY."
+    },
+    {
+      "case_id": "manual_document_type_filter",
+      "query": "G00 rapid motion",
+      "top_k": 5,
+      "user_context": {"document_type": "MANUAL"},
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0", "DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "notes": "document_type=MANUAL maps to the canonical evidence source type."
+    },
+    {
+      "case_id": "machine_id_not_bound_to_manuals",
+      "query": "SINUMERIK tool management",
+      "top_k": 5,
+      "machine_id": "CNC-05",
+      "expected_document_ids": ["DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["tool"],
+      "expected_keywords_any": ["tool management", "tool data", "tool list", "tool magazine", "magazine"],
+      "notes": "machine_id must not filter the document corpus; Siemens still ranks first."
+    },
+    {
+      "case_id": "product_id_ignored",
+      "query": "how do I set a tool offset",
+      "top_k": 5,
+      "product_id": "SHAFT-A",
+      "expected_document_ids": ["DOC-910C22EDCCAD", "DOC-42618F58C6C0"],
+      "required_source_types": ["MANUAL"],
+      "notes": "product_id must not restrict which manuals can be retrieved."
+    },
+    {
+      "case_id": "content_spindle_lubrication",
+      "query": "spindle lubrication",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-42618F58C6C0", "DOC-910C22EDCCAD", "DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["spindle"],
+      "expected_keywords_any": ["lubrication", "lubricant", "oil", "grease", "maintenance"],
+      "forbidden_heading_keywords": ["work offset", "chuck removal", "improper coolant", "high pressure"],
+      "notes": "CORE QUERY 1: a strong hit must address spindle lubrication, not work offsets or chuck removal."
+    },
+    {
+      "case_id": "content_lathe_chuck_safety",
+      "query": "lathe chuck safety",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-42618F58C6C0", "DOC-910C22EDCCAD"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["chuck"],
+      "expected_keywords_any": ["safety", "warning", "secure", "clamp", "clamping", "jaw", "jaws"],
+      "notes": "CORE QUERY 2: chuck content with genuine safety/clamping support."
+    },
+    {
+      "case_id": "content_sinumerik_tool_management",
+      "query": "SINUMERIK tool management",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["tool"],
+      "expected_keywords_any": ["tool management", "tool data", "tool list", "tool magazine", "magazine"],
+      "notes": "CORE QUERY 3: Siemens tool-management terminology in chunk text."
+    },
+    {
+      "case_id": "content_lockout_tagout_energy",
+      "query": "lockout tagout hazardous energy",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-3EA7380FA108"],
+      "required_source_types": ["SAFETY"],
+      "expected_keywords": ["lockout", "tagout"],
+      "expected_keywords_any": ["hazardous energy", "energy control", "energy isolation", "energy-isolating"],
+      "notes": "CORE QUERY 4: OSHA hazardous-energy content in chunk text."
+    },
+    {
+      "case_id": "content_siemens_alarm_reset",
+      "query": "Siemens alarm reset",
+      "top_k": 5,
+      "expected_document_ids": ["DOC-53F6788896F3"],
+      "required_source_types": ["MANUAL"],
+      "expected_keywords": ["alarm"],
+      "expected_keywords_any": ["reset", "acknowledge", "acknowledgement", "clear", "cancel"],
+      "notes": "CORE QUERY 5: alarm content with reset/acknowledge support where present."
+    }
+  ]
+}

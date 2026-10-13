@@ -1,0 +1,2 @@
+"""ManufacturaIQ backend foundation package."""
+

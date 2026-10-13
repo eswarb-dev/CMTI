@@ -1,0 +1,60 @@
+# Local environment files may contain secrets — never commit them.
+.env
+.env.local
+.env.*.local
+!.env.example
+backend/.env
+frontend/.env
+
+# Python / local tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node / frontend builds
+node_modules/
+dist/
+build/
+frontend/node_modules/
+frontend/dist/
+
+# Local databases, uploaded documents, and vector-store runtime state
+*.db
+*.sqlite
+*.sqlite3
+backend/data/
+data/documents/originals/
+data/documents/registry/
+data/documents/vectors/
+vector_store/
+
+# Bulky document-corpus build artifacts are rebuilt/managed outside deploy Git
+datasets/CNC Mill Tool Wear/
+datasets/Faulty Steel Plates/
+datasets/Industrial Maintenance Synthetic Dataset/
+datasets/Machine Predictive Maintenance Classification/
+datasets/raw/
+datasets/normalized/
+datasets/staged/
+datasets/reports/
+datasets/synthetic/
+*.parquet
+
+# Generated local analysis/build artifacts
+.archify/
+reports/
+docs/architecture/*.json
+docs/*.pdf
+docs/*.jpeg
+docs/*.jpg
+docs/*.pptx
+docs/*.docx
+
+# My Skills: begin
+AGENTS.md
+DESIGN.md
+CLAUDE.md
+# My Skills: end

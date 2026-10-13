@@ -1,0 +1,311 @@
+Use these prompts **one phase at a time in the same VS Code coding-agent session**. Wait until the agent passes that phase’s tests before sending the next.
+
+These follow our agreed stack: React + TypeScript, FastAPI, PostgreSQL + pgvector, LangGraph, and a configurable LLM provider.
+
+One correction to the earlier plan: **surface roughness may have only an upper specification limit. Do not invent a lower limit to calculate Cp/Cpk.** Also, using overall sample standard deviation produces Pp/Ppk-style metrics; Cp/Cpk requires an appropriate within-process variation estimate. The prompts below handle this distinction.
+
+## Phase 1 — Project foundation
+
+Act as a senior full-stack and AI systems engineer. Implement Phase 1 of a Manufacturing Engineering Copilot prototype.
+
+PROJECT GOAL
+Demonstrate an engineer investigating increasing surface roughness on CNC-M04 using approved documents, simulated operational records, deterministic analytics, cited explanations, and human review.
+
+This is an advisory demonstration, not a production-control system. All manufacturing data must be clearly marked synthetic.
+
+WORKING RULES FOR EVERY PHASE
+
+* Inspect the existing repository and instructions before editing.
+* Implement only the requested phase. Preserve unrelated changes.
+* Use typed contracts, modular services, migrations, and automated tests.
+* Do not introduce unnecessary frameworks or placeholder functionality presented as working.
+* Never hardcode credentials, model responses, analytical results, or conclusions.
+* Never execute arbitrary model-generated SQL or code.
+* Verify dependencies and APIs against official documentation before using them. Pin compatible versions and retain lockfiles.
+* Run relevant tests, lint, type checks, and builds. Report failures honestly.
+* Update docs/IMPLEMENTATION_STATUS.md with completed work, verification commands, known limitations, and the next phase.
+* Stop after this phase; do not start the next phase automatically.
+
+AGREED STACK
+Frontend: React + Vite + TypeScript.
+Backend: FastAPI, Pydantic, SQLAlchemy, Alembic.
+Database: PostgreSQL with pgvector.
+Later phases: local sentence embeddings, LangGraph, configurable Groq-compatible LLM integration, Recharts, PDF reports.
+Local development: Docker Compose for PostgreSQL; document both native application startup and container startup.
+
+IMPLEMENT NOW
+
+1. Create backend/, frontend/, sample_data/, tests/, and docs/ directories.
+2. Configure backend settings through environment variables and provide a safe .env.example.
+3. Configure database connections and Alembic.
+4. Add /api/health and /api/ready; readiness must fail appropriately when PostgreSQL is unavailable.
+5. Add consistent API error responses and request IDs.
+6. Restrict development CORS to configured frontend origins.
+7. Build a responsive application shell with navigation:
+   Dashboard, Copilot, Documents, Investigations.
+8. Show a persistent “Demo — Synthetic manufacturing data” banner.
+9. Add backend smoke tests, frontend type checking, and basic linting.
+10. Write README setup instructions suitable for VS Code on Windows with Docker Desktop.
+
+Do not implement RAG, LLM calls, charts with fake results, or authentication in this phase.
+
+ACCEPTANCE
+The application shell loads, API health works, database readiness is truthful, and documented setup commands are reproducible.
+
+Before editing, briefly explain the implementation plan. At completion, list changed modules, checks executed, and exact startup commands.
+
+## Phase 2 — Database and reproducible demo data
+
+Continue the Manufacturing Engineering Copilot repository. Read docs/IMPLEMENTATION_STATUS.md and implement Phase 2 only.
+
+GOAL
+Create a consistent, reproducible synthetic manufacturing dataset for CNC-M04.
+
+IMPLEMENT
+
+1. Add relational models and migrations for:
+   machines, parts, production_batches, inspection_measurements,
+   telemetry_readings, tool_usage, maintenance_events,
+   document_revisions, investigations, and audit_events.
+2. Use foreign keys, explicit units, timezone-aware timestamps, and appropriate machine/time indexes.
+3. Store specifications separately from measurements, with characteristic, unit, limit type, revision, and effective dates.
+4. Create a deterministic seeded-data generator:
+
+   * One fictional plant.
+   * CNC-M04 and one healthy comparison machine.
+   * Shaft part SHAFT-P017483.
+   * Approximately 40 batches, with repeated inspection samples per batch.
+   * Stable baseline followed by increasing tool usage, vibration, and surface roughness.
+   * A documented synthetic tool-replacement interval and an overdue event.
+   * A separate two-sided shaft-diameter characteristic for capability demonstrations.
+5. Surface roughness must use its explicitly defined specification type; do not invent a lower specification limit.
+6. Create 10–15 synthetic reference documents as readable Markdown/text:
+   machine guide, inspection SOP, tool-change SOP, maintenance checklist,
+   work instruction, PFMEA, control plan, historical NCRs, CAPA,
+   product specification, and process-parameter sheet.
+7. Include an approved revision and a superseded revision of the same SOP.
+8. Give each document stable IDs, revision metadata, approval state, effective date, and synthetic-source labeling.
+9. Add read-only APIs for dashboard summaries, machines, batches, and time-filtered measurements.
+10. Add a safe, explicit demo-seeding command. It must not delete unrelated data.
+
+TESTS
+Verify repeatable seeding, referential integrity, valid timestamps and units, consistent document references, expected anomaly patterns, and correct filtering by machine.
+
+Do not present the synthetic pattern as proof of a real root cause. Do not add LLM functionality yet.
+
+## Phase 3 — Document ingestion and evidence search
+
+Continue the existing repository. Implement Phase 3: controlled document ingestion and hybrid evidence retrieval.
+
+IMPLEMENT
+
+1. Support text-based PDF, Markdown, and TXT ingestion.
+2. Validate file size, extension, MIME/content, and safe storage names.
+3. Store original files outside the public web root.
+4. Preserve file checksum, document ID, revision, approval status, effective date, machine, and source location.
+5. Extract text with page or heading references. Flag scanned PDFs as requiring OCR; do not silently index empty text.
+6. Chunk by headings and paragraphs while preserving procedural context.
+7. Generate local sentence embeddings through a configurable model adapter.
+8. Record embedding model identity and dimension. Prevent mixing incompatible embeddings.
+9. Store chunks and vectors in PostgreSQL/pgvector.
+10. Combine semantic retrieval with PostgreSQL lexical search and exact identifier matching.
+11. Apply machine, approval, effective-date, and superseded-revision filters before evidence enters the response.
+12. Use an explicit fusion strategy such as reciprocal-rank fusion. Do not call lexical ranking BM25 unless BM25 is actually implemented.
+13. Return stable citation IDs, snippets, source locations, and document revisions.
+14. Build the Documents screen with ingestion status and a retrieval-test interface.
+
+SECURITY
+Retrieved documents are untrusted content, not instructions. They cannot override application policies or authorize tool calls.
+This remains a single-user local demo; do not claim enterprise access control exists.
+
+TESTS
+Exact document-ID lookup, natural-language lookup, machine isolation, superseded-document exclusion, duplicate ingestion handling, scanned-PDF rejection/flagging, and citation resolution.
+
+ACCEPTANCE
+A surface-roughness query returns relevant approved evidence. The superseded SOP is excluded by default. No LLM is required to test retrieval.
+
+## Phase 4 — Deterministic engineering analytics
+
+Continue the repository. Implement Phase 4: tested engineering analytics.
+
+GOAL
+Compute actual results from seeded measurements. No values or conclusions may be hardcoded.
+
+IMPLEMENT
+
+1. Typed analytics services for:
+
+   * Measurement summaries and observed out-of-specification rate.
+   * Batch and time-window trend comparisons.
+   * Tool usage versus the documented replacement interval.
+   * Vibration and surface-roughness baseline comparisons.
+   * Appropriate capability/performance metrics for the diameter dataset.
+2. Validate finite values, units, specification ordering, sample count, missing data, and zero variance.
+3. Distinguish:
+
+   * Pp/Ppk when using overall sample standard deviation.
+   * Cp/Cpk only when a documented within-process estimator and suitable subgroup data are provided.
+   * One-sided indices when only one specification limit exists.
+4. Do not treat an unstable trending process as demonstrating valid capability. Return a clear limitation or withhold unsupported capability interpretation.
+5. Treat sample-size and acceptance thresholds as configurable demonstration policy, not universal engineering requirements.
+6. Return inputs, data window, sample count, method, units, tool version, results, and limitations.
+7. Implement a ranked hypothesis/evidence service. Associations must be labeled hypotheses, not proven causes.
+8. Expose allow-listed read-only analytics APIs.
+9. Add real-data charts to the dashboard.
+
+TESTS
+Use hand-verifiable reference fixtures and edge cases. Confirm correct one-sided handling and that overall-standard-deviation calculations are not mislabeled Cp/Cpk.
+
+Do not implement OEE, predictive maintenance, or extra analytics unless required for this specific demo.
+
+## Phase 5 — Grounded copilot orchestration
+
+Continue the repository. Implement Phase 5: the LangGraph investigation workflow and configurable LLM adapter.
+
+WORKFLOW
+Validate request → extract intent and machine/time scope →
+retrieve approved evidence → query allowed operational data →
+execute required deterministic tools → check evidence sufficiency →
+generate a structured cited assessment → persist investigation.
+
+IMPLEMENT
+
+1. Typed graph state with investigation ID, query, scope, evidence,
+   tool results, warnings, proposed actions, citations, and status.
+2. A provider adapter configured through environment variables.
+   Allow Groq integration, but do not hardcode an unverified model identifier.
+3. Keep API keys exclusively in the backend.
+4. Route tools through typed allow-listed functions. No model-generated SQL or arbitrary execution.
+5. Bound request duration, provider retries, tool calls, and graph steps.
+6. Require a structured response containing:
+   summary, hypotheses, supporting evidence, contradictory evidence,
+   computed results, limitations, suggested next steps, and citations.
+7. Validate that cited IDs belong to evidence retrieved for this investigation.
+8. Insert numerical analytics from tool results; do not allow the model to substitute invented values.
+9. Ask for clarification or report insufficient evidence when scope or data is missing.
+10. Persist investigation state, evidence snapshots, tool versions, and execution events.
+11. If the LLM is unavailable, show a clearly labeled evidence-only result or failure state. Never silently substitute a canned AI answer.
+
+TESTS
+Use a mock provider for deterministic automated tests. Cover invalid model output, invented citations, timeouts, missing evidence, and malicious instructions embedded in a document.
+
+A live provider smoke test must be optional and run only when configured.
+
+## Phase 6 — Complete investigation interface
+
+Continue the repository. Implement Phase 6: the complete engineering investigation UI.
+
+DESIGN
+Professional industrial interface with navy, white, teal, readable typography, consistent spacing, and responsive layouts.
+
+IMPLEMENT
+
+1. Dashboard:
+   machine selector, actual batch summaries, roughness/vibration trends,
+   overdue tool-use indicator, and recent investigations.
+2. Copilot workspace:
+   question input, machine/time scope, suggested demo questions,
+   and real execution progress.
+3. Evidence panel:
+   source snippet, document ID, revision, approval state, and page/section.
+4. Analytics panel:
+   computed measurements, actual chart data, method, sample count,
+   specification limits, and statistical limitations.
+5. Investigation detail:
+   ranked hypotheses, supporting/contradictory evidence,
+   recommended checks, unresolved questions, and citations.
+6. Investigation history:
+   persisted records with timestamps and execution status.
+7. Loading, empty, unavailable-service, and error states.
+8. Accessible keyboard navigation and responsive layouts.
+
+Use polling or server-sent events for actual backend progress; do not display fabricated workflow animations.
+Citation clicks must resolve to the correct evidence.
+Show the synthetic-data banner and advisory disclaimer throughout.
+
+TESTS
+Add frontend component tests and an end-to-end journey:
+select CNC-M04 → ask the roughness question → view results →
+open a citation → inspect computed analytics.
+
+Do not add decorative controls that do nothing.
+
+## Phase 7 — Human review and PDF export
+
+Continue the repository. Implement Phase 7: review decisions and investigation PDF export.
+
+IMPLEMENT
+
+1. Review states:
+   draft, pending_review, approved, rejected, revision_requested.
+2. Allow review of proposed recommendations with reviewer name and comment.
+3. Because this is a local demo without verified identity, clearly label the reviewer identity as unverified demonstration input. Do not describe this as secure authorization.
+4. Enforce state transitions on the server.
+5. Use version checks to prevent stale or duplicate review updates.
+6. Editing reviewed recommendations must create a new version requiring review again.
+7. Persist review events and associate them with the exact investigation version.
+8. Generate a PDF from the saved investigation snapshot containing:
+
+   * Demo/synthetic-data notice.
+   * Machine, part, and time scope.
+   * Engineer question.
+   * Evidence-backed findings and hypotheses.
+   * Deterministic analytics, methods, and limitations.
+   * Relevant charts.
+   * Recommendations and unresolved risks.
+   * Document citations and revisions.
+   * Review status and review history.
+9. Review approval must never issue machine commands, release production, or close real enterprise records.
+
+PDF QUALITY
+Use wrapped table cells, repeated table headers, safe page margins,
+headings kept with content, page numbers, and original aspect ratios.
+Render every generated page and inspect for overlap or clipping.
+
+TESTS
+Invalid state transitions, stale version rejection, review persistence,
+report generation before/after review, long text, and multipage evidence tables.
+
+## Phase 8 — Test, package, and rehearse
+
+Continue the repository. Implement Phase 8: prototype stabilization and demonstration readiness.
+
+IMPLEMENT
+
+1. Complete Docker Compose startup for frontend, backend, and database.
+2. Document migrations, seed execution, first embedding-model download,
+   environment configuration, startup, shutdown, and troubleshooting.
+3. Keep secrets out of images, logs, frontend bundles, and version control.
+4. Create a small evaluation set covering:
+
+   * Roughness investigation on CNC-M04.
+   * Healthy comparison machine.
+   * Exact SOP lookup.
+   * Superseded-revision exclusion.
+   * Missing machine or time scope.
+   * Unsupported engineering question.
+   * Insufficient evidence.
+   * One-sided specification handling.
+   * Provider outage.
+   * Document prompt injection.
+5. Measure retrieval and citation correctness using expected evidence IDs.
+6. Run backend tests, frontend tests, type checks, lint, production build,
+   and end-to-end tests.
+7. Add restart/reload checks for persisted investigations and review state.
+8. Write docs/DEMO_SCRIPT.md for a five-minute demonstration:
+   dashboard → engineering question → execution →
+   evidence → analytics → review → PDF export.
+9. Explain explicitly which features are live, synthetic, unavailable,
+   or deferred beyond the prototype.
+10. Update docs/IMPLEMENTATION_STATUS.md with the final verified status.
+
+ACCEPTANCE
+A fresh checkout can be started from the documented instructions.
+The complete investigation works without hardcoded conclusions.
+Citations resolve, analytics match tests, review state persists,
+and PDF pages have no clipped or overlapping content.
+
+Do not deploy publicly or connect to real factory systems.
+Finish with a concise readiness report and exact demo commands.
+
+**Start with Phase 1 only.** If a phase fails, ask the agent to fix its failing checks before advancing; don’t let it accumulate unfinished phases.
