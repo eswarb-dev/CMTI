@@ -59,7 +59,13 @@ Create a Render Web Service from `https://github.com/eswarb-dev/CMTI.git`.
 | Start command | `uvicorn app.main:app --host 0.0.0.0 --port $PORT` |
 | Health check path | `/health` |
 
-The editable install command is valid because `backend/pyproject.toml` declares the backend package and runtime dependencies.
+The editable install command is valid because `backend/pyproject.toml` declares the backend package and runtime dependencies. The trailing dot is required: `pip install -e` will fail with `-e option requires 1 argument`.
+
+The repository pins Render's Python runtime with `.python-version` at the repo root. You can also set this Render environment variable explicitly:
+
+```env
+PYTHON_VERSION=3.12
+```
 
 ### Persistent Disk
 
