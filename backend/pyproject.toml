@@ -20,6 +20,7 @@ dependencies = [
   "google-genai>=2.22.0,<3",
   "bcrypt>=4.1.0",
   "PyJWT>=2.8.0",
+  "python-multipart>=0.0.20",
 ]
 
 [project.optional-dependencies]
